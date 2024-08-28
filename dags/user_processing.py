@@ -32,7 +32,8 @@ def _store_user():
 with DAG (
     "user_processing",
     start_date=datetime(2022, 1, 1),
-    schedule_interval="@daily",  # Run every day at midnight
+    # schedule_interval="@daily",# old and deprecated way 
+    schedule="@daily",  # Run every day at midnight
     catchup=False, #
 ) as dag:
     
