@@ -11,7 +11,7 @@ with DAG('parallel_dag',start_date=datetime(2021,1,1),schedule='@daily',catchup=
     load_a = BashOperator(task_id='load_a', bash_command='sleep 10')
     load_b = BashOperator(task_id='load_b', bash_command='sleep 10')
 
-    transform = BashOperator(task_id='transform', bash_command="sleep 10")
+    transform = BashOperator(task_id='transform', bash_command="sleep 10", queue="high_cpu")
 
     extract_a >> load_a
     extract_b >> load_b
